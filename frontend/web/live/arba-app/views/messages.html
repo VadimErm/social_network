@@ -1,0 +1,76 @@
+<!-- /wrapper -->
+<div class="section messages">
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<h5 ng-model="subtitle">{{ subtitle }}</h5>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m12 l3">
+				<aside class="htabs-wrap">
+					<a class="btn-large waves-effect full" href="/user/account/profile">back to profile</a>
+					<ul class="bordered-box edit-menu htabs">
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.messages({type: 'all'})" ui-sref-active="active">All messages <span ng-model="count_msg.all" ng-if="count_msg.all > 0">({{ count_msg.all }})</span></a>
+						</li>
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.messages({type: 'unread'})" ui-sref-active="active">Unread messages <span ng-model="count_msg.unread" ng-if="count_msg.unread > 0">({{ count_msg.unread }})</span></a>
+						</li>
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.messages({type: 'blacklist'})" ui-sref-active="active">Blacklist  <span ng-model="count_msg.blist" ng-if="count_msg.blist > 0">({{ count_msg.blist }})</span></a>
+						</li>
+					</ul>
+					<a  class="btn-large btn-liner waves-effect full" href="javascript:void(0)" ng-click="clearAllDialog()">delete all dialogs</a>
+				</aside>
+			</div>
+			<div class="col s12 m12 l9 messages-content">
+				<div class="row">
+					<md-input-container class="col s12">
+						<label>Search</label>
+						<input ng-model="searchString" ng-change="search()">
+					</md-input-container>
+				</div>
+				
+				<div ng-model="noneDialogs" ng-if="!noneDialogs">
+					<div ng-model="dialogs" ng-if="dialogs.length" class="dialogs-inner">
+						<ul class="dialogs-wrap">
+							<li ng-repeat="dialog in dialogs" ng-class="{'blue lighten-5': dialog.last_message.receiver_id === profile.user_id && dialog.last_message.readed === 0 && dialog.last_message.author_id !== profile.user_id}" ng-if="(listType === 'unread' && dialog.last_message.readed === 0 && dialog.last_message.receiver_id === profile.user_id && dialog.last_message.author_id !== profile.user_id) || (listType === 'blacklist' && dialog.last_message.blocked === 1) || (listType === 'all' && !dialog.last_message.blocked)" class="fuser-row clearfix">
+								<a href="#deldialog" class="del-dialog popup-form"><span class="ico-close-cross-circular-interface-button"></span></a>
+								<div class="u-avatar round small">
+									<img ng-model="dialog.last_message.author.avatar" ng-src="{{ dialog.last_message.author.avatar }}" alt="user avatar">
+								</div>
+								<div class="u-body">
+									<a ui-sref="dash.messages-chat({dialogID: dialog.id})" class="bolder" ng-model="dialog.last_message.author.username">{{ dialog.last_message.author.username }}</a>
+									<a class="sub-title truncate" ui-sref="dash.messages-chat({dialogID: dialog.id})">
+										<span ng-model="dialog.last_message" ng-if="dialog.last_message.images.length || dialog.last_message.videos.length" class="ico-attachment-paperclip-symbol-of-interface"></span> <span ng-model="dialog.last_message.text" ng-if="dialog.last_message.isDeleted === 0" ng-bind-html="dialog.last_message.text | trustAsHtml"></span> <span ng-model="dialog.last_message.text" ng-if="dialog.last_message.isDeleted === 1">You hadn't any messages with this user yet.</span>
+									</a>
+									<a ng-model="dialog.last_message" ng-if="dialog.last_message.isDeleted === 0" class="nmess" href="javascript:void(0)" ng-click="clearDialog(dialog)">clear history</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div ng-model="noneDialogs" ng-if="listType === 'unread' && noneDialogs" id="messages">
+					<div class="alert-box-none">
+						You don't have any unreaded dialogs.
+					</div>
+				</div>
+				
+				<div ng-model="noneDialogs" ng-if="listType === 'blacklist' && noneDialogs" id="messages">
+					<div class="alert-box-none">
+						You don't have any blacklist dialogs yet.
+					</div>
+				</div>
+				
+				<div ng-model="dialogs" ng-if="listType === 'all' && !dialogs.length" id="messages">
+					<div class="alert-box-none">
+						You don't have any dialogs yet.
+					</div>
+				</div>
+									
+			</div>
+		</div>
+	</div>
+</div>

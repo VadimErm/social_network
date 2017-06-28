@@ -1,0 +1,33 @@
+.input-field input:not([type]) + label:after,
+.input-field input[type=text] + label:after,
+.input-field input[type=password] + label:after,
+.input-field input[type=email] + label:after,
+.input-field input[type=url] + label:after,
+.input-field input[type=time] + label:after,
+.input-field input[type=date] + label:after,
+.input-field input[type=datetime] + label:after,
+.input-field input[type=datetime-local] + label:after,
+.input-field input[type=tel] + label:after,
+.input-field input[type=number] + label:after,
+.input-field input[type=search] + label:after,
+.input-field textarea.materialize-textarea + label:after {
+    top: 41px;
+    font-size: 12px;
+}
+
+input:not([type]) + label.active:after,
+input[type=text] + label.active:after,
+input[type=password] + label.active:after,
+input[type=email] + label.active:after,
+input[type=url] + label.active:after,
+input[type=time] + label.active:after,
+input[type=date] + label.active:after,
+input[type=datetime] + label.active:after,
+input[type=datetime-local] + label.active:after,
+input[type=tel] + label.active:after,
+input[type=number] + label.active:after,
+input[type=search] + label.active:after,
+textarea.materialize-textarea + label:after {
+    top: 57px;
+    font-size: 12px;
+}

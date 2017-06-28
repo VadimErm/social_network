@@ -1,0 +1,1 @@
+ CREATE (i0:Image{src:'/uploads/e1f8d685718286e14dda92dbeb85cdab_1489152312.jpg'})-[:has_image]->(n)

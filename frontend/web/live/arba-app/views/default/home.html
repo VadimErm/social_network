@@ -1,0 +1,20 @@
+	<ui-view name="header"></ui-view>
+	
+	<ui-view name="top-nav"></ui-view>
+	
+	<div id="arba-content" ng-class="{'content-loaded': loadedContent, '': !loadedContent}">
+	
+		<ui-view name="breadcrumbs"></ui-view>
+		
+		<div id="arba-loading" class="content-preloaded">
+			<svg class="spinner" viewBox="0 0 50 50">
+				<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+			</svg>
+		</div>
+		
+		<ui-view name="app-view"></ui-view>
+	</div>
+	
+	<ui-view name="footer"></ui-view>
+	
+	<ui-view name="popups"></ui-view>

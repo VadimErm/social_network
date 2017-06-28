@@ -1,0 +1,90 @@
+<!-- Footer -->
+<div ng-if="notAngularSystem === false">
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m12 l5">
+					<div class="footer-about">
+						<img class="logo" src="arba-assets/images/logo.svg" alt="logo">
+						<p>Nulla eu lectus nec magna porttitor varius sit amet eu neque. In pellentesque malesuada venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed molestie, tellus varius volutpat venenatis, leo ipsum aliquet libero, id egestas ipsum lectus in elit.</p>
+					</div>
+				</div>
+				<div class="col s12 m6 l4">
+					<div class="row">
+						<div class="col s12">
+							<h6>Menu</h6>
+						</div>
+						<div class="col s6 m6 l6">
+							<ul class="bottom-menu">
+								<li><a ui-sref="dash.top-cars" ui-sref-active="active">Top cars</a></li>
+								<li><a ui-sref="dash.myjournal-list" ui-sref-active="active">Car’s journals</a></li>
+								<li><a ui-sref="dash.blogs" ui-sref-active="active">Blogs</a></li>
+								<li><a ui-sref="dash.communities" ui-sref-active="active">Communities</a></li>
+							</ul>
+						</div>
+						<div class="col s6 m6 l3">
+							<ul class="bottom-menu">
+								<li><a ui-sref="dash.achievements" ui-sref-active="active">Achievements</a></li>
+								<li><a ui-sref="dash.companies" ui-sref-active="active">Companies</a></li>
+								<li><a ui-sref="dash.news" ui-sref-active="active">Promo</a></li>
+								<li><a ui-sref="dash.notifications" ui-sref-active="active">News</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="row">
+						<div class="col s12">
+							<h6>Instagram</h6>
+						</div>
+					</div>
+                    <div class="row">
+                        <div class="inst-widget">
+                            <script src="http://lightwidget.com/widgets/lightwidget.js"></script>
+                            <iframe src="http://lightwidget.com/widgets/4ba4aacc2411580ab6009846053d5e78.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0px; overflow: hidden; height: 213px;"></iframe>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+		<div class="copy">
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m6 l6">
+						<div class="copy-text">
+							&copy; 2017. All rights reserved. <a href="/">Arba.ae</a>
+						</div>
+					</div>
+					<div class="col s12 m6 l6">
+						<div class="social">
+							<a href="#"><span class="ico-facebook"></span></a>
+							<a href="#"><span class="ico-twitter"></span></a>
+							<a href="#"><span class="ico-youtube"></span></a>
+							<a href="#"><span class="ico-instagram"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<div ng-if="notAngularSystem === true">
+	<div class="col s6 m6 l6">
+		<ul class="bottom-menu">
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.top-cars'] }}">Top cars</a></li>
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.myjournal-list'] }}">Car’s journals</a></li>
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.blogs'] }}">Blogs</a></li>
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.communities'] }}">Communities</a></li>
+		</ul>
+	</div>
+	<div class="col s6 m6 l3">
+		<ul class="bottom-menu">
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.achievements'] }}">Achievements</a></li>
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.companies'] }}">Companies</a></li>
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.promo'] }}">Promo</a></li>
+			<li><a ng-model="statesUrls" href="/live/{{ statesUrls['dash.news'] }}">News</a></li>
+		</ul>
+	</div>
+</div>
+<!-- /Footer -->

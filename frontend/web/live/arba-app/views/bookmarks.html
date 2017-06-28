@@ -1,0 +1,125 @@
+<!-- wrapper -->
+<div class="section bookmarks">
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<h5>My bookmarks</h5>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m12 l3">
+				<aside class="htabs-wrap">
+					<a class="btn-large waves-effect full" href="/user/account/profile">back to profile</a>
+					<ul class="bordered-box edit-menu htabs">
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.bookmarks({type: 'users'})" ui-sref-active="active" ng-model="$all.users">Users ({{ $all.users.length || 0 }})</a>
+						</li>
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.bookmarks({type: 'journals'})" ui-sref-active="active" ng-model="$all.journals">Car’s journals ({{ $all.users.journals || 0 }})</a>
+						</li>
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.bookmarks({type: 'journalEntries'})" ui-sref-active="active" ng-model="$all.journalEntries">Car’s entries ({{ $all.users.journalEntries || 0 }})</a>
+						</li>
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.bookmarks({type: 'blogPosts'})" ui-sref-active="active" ng-model="$all.blogPosts">Blog’s entries ({{ $all.users.blogPosts || 0 }})</a>
+						</li>
+						<li class="tab profile-info-row">
+							<a ui-sref="dash.bookmarks({type: 'communities'})" ui-sref-active="active" ng-model="$all.communities">Communities ({{ $all.users.communities || 0 }})</a>
+						</li>
+					</ul>
+				</aside>
+			</div>
+			<div class="col s12 m12 l9 bookmarks-content">
+				<div class="row">
+					<div class="col input-field s12">
+						<input id="susers" type="text" ng-model="$search" ng-change="search()" placeholder="Search">
+						<span class="ico-magnifier"></span>
+					</div>
+				</div>
+				
+				<div id="users" ng-if="$options.type === 'users'">
+					<div ng-model="$list" ng-if="!$list.length" class="alert-box-none">
+						You don't have any users yet.
+					</div>
+					
+					<div ng-model="$list" ng-if="$list.length" ng-repeat="(i, item) in $list" class="fuser-row clearfix">
+						<div class="u-avatar round small">
+							<img ng-model="item.avatar" src="{{ item.avatar }}" alt="user avatar">
+						</div>
+						<div class="u-body">
+							<a class="btn-gray btn-ui waves-effect" ng-click="unbookmarked(item)" href="javascript:void(0)"><span class="ico-close-cross-circular-interface-button"></span></a>
+							<a ng-model="item" target="_blank" href="/user/account/view?id={{ item.user_id }}" class="bolder">{{ item.first_name }} {{ item.last_name }}</a>
+							<div ng-model="item" class="city">
+								{{ item.city }}, {{ item.country }}
+							</div>
+							<a ng-model="item.user_id" class="nmess popup-form" ui-sref="dash.messages-new({userID: item.user_id})">Send message</a>
+						</div>
+					</div>
+				</div>
+				
+				<div id="cjournals" ng-if="$options.type === 'journals'">
+					<div ng-model="$list" ng-if="!$list.length" class="alert-box-none">
+						You don't have any car's journals yet.
+					</div>
+					<div ng-model="$list" ng-if="$list.length" ng-repeat="(i, item) in $list" class="bookmark-row clearfix">
+						<div class="preview-img round">
+							<img src="images/in-photo.jpg" alt="car avatar">
+						</div>
+						<div class="b-body">
+							<a href="#" class="bolder">My favorite car Mercedes-Benz</a>
+							<div class="sub-title">Mercedes-Benz / W211 / Classic / 2014</div>
+							<a class="btn-gray btn-ui waves-effect" href="#"><span class="ico-close-cross-circular-interface-button"></span></a>
+						</div>
+					</div>
+				</div>
+				<div id="centries" ng-if="$options.type === 'journalEntries'">
+					<div ng-model="$list" ng-if="!$list.length" class="alert-box-none">
+						You don't have any car's entries yet.
+					</div>
+					<div ng-model="$list" ng-if="$list.length" ng-repeat="(i, item) in $list" class="bookmark-row clearfix">
+						<div class="preview-img round">
+							<img src="images/in-photo6.jpg" alt="car avatar">
+						</div>
+						<div class="b-body">
+							<a href="#" class="bolder truncate">Donec laoreet, tellus scelerisque lobortis tincidunt, diam turpis feugiat turpis, et vestibulum nibh dui eget diam.</a>
+							<a href="#" class="marg2">My favorite car Mercedes-Benz</a>
+							<div class="sub-title">Mercedes-Benz / W211 / Classic / 2014</div>
+							<a class="btn-gray btn-ui waves-effect" href="#"><span class="ico-close-cross-circular-interface-button"></span></a>
+						</div>
+					</div>
+				</div>
+				<div id="bentries" ng-if="$options.type === 'blogPosts'">
+					<div ng-model="$list" ng-if="!$list.length" class="alert-box-none">
+						You don't have any blog's entries yet.
+					</div>
+					<div ng-model="$list" ng-if="$list.length" ng-repeat="(i, item) in $list" class="bookmark-row clearfix">
+						<div class="preview-img round">
+							<img src="images/u-avatar1.jpg" alt="user avatar">
+						</div>
+						<div class="b-body">
+							<a href="#" class="bolder truncate">Donec laoreet, tellus scelerisque lobortis tincidunt, diam turpis feugiat turpis, et vestibulum nibh dui eget diam.</a>
+							<a href="#" class="sub-title">Aahil Asad</a>
+							<a class="btn-gray btn-ui waves-effect" href="#"><span class="ico-close-cross-circular-interface-button"></span></a>
+						</div>
+					</div>
+				</div>
+				<div id="communities" ng-if="$options.type === 'communities'">
+					<div ng-model="$list" ng-if="!$list.length" class="alert-box-none">
+						You don't have any communities yet.
+					</div>
+					<div ng-model="$list" ng-if="$list.length" ng-repeat="(i, item) in $list" class="bookmark-row clearfix">
+						<div class="preview-img round">
+							<img src="images/community-ava1.jpg" alt="community avatar">
+						</div>
+						<div class="b-body">
+							<a href="#" class="bolder truncate">BMW Lovers Club</a>
+							<div class="sub-title">167 700 users</div>
+							<a class="btn-gray btn-ui waves-effect" href="#"><span class="ico-close-cross-circular-interface-button"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /wrapper -->

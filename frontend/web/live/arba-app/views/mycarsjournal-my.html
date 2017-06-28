@@ -1,0 +1,428 @@
+<!-- Confirm wrapper -->
+<div class="section">
+	<div class="container">
+		<div ng-model="currentCar" class="hidden-item row">
+			<div class="col s12 garage-content single-car">
+				<div class="pos-rel">
+					<div class="c-menu-wrap">
+						<span id='default-toolbar' ng-click="$toolbar('default-toolbar')" class="c-menu round"></span>
+					</div>
+					<ul class="c-menu-actions hide">
+						<li><a href="javascript:void(0)">Move to "ex-cars"</a></li>
+						<li><a href="/garage#addcar-id-{{ currentCar.id }}">Edit</a></li>
+						<li><a href="javascript:void(0)">Delete</a></li>
+					</ul>
+				</div>
+				<h5>{{ currentCar.brand }} / {{ currentCar.model }} / {{ currentCar.modification }} / <span class="gray">My favorite car {{ currentCar.car_name }}</span></h5>
+				<div class="garage-wrap">
+					<div class="garage-block">
+						<div class="garage-car">
+							<div class="pos-rel">
+								<div class="big-car-rating" ng-model="currentCar.favorites">
+									<span class="ico-favorites-star-outlined-symbol"></span> {{ currentCar.favorites }}
+								</div>
+								<ul id="car-slider" ng-model="currentCar.images">
+									<li class="garage-car-wrap" ng-model="currentCar.images" ng-repeat="image in currentCar.images" style="background-image:url({{ image.src }});"></li>
+								</ul>
+								<div id="car-pager" ng-model="currentCar.images">
+									<a ng-model="currentCar.images" ng-repeat="(i, image) in currentCar.images" data-slide-index="{{ i }}" href=""><img src="{{ image.src }}"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="garage-block">
+						<h5>Car's information</h5>
+						<div class="car-info">
+							<h6 class="car-arch">About my car</h6>
+							<p ng-model="currentCar.about">{{ currentCar.about }}</p>
+							<div class="block-meta">
+								<div class="meta-item livelike"><a href="javascript:void(0)" ng-model="currentCar.live_likes"><strong>Live Likes</strong> {{ currentCar.live_likes }}</a></div>
+								<div class="meta-item"><a href="javascript:void(0)" ng-click="like(currentCar)" ng-model="currentCar.likes"><span class="ico-heart-outline"></span>{{ currentCar.likes }}</a></div>
+								<div class="meta-item"><a ng-click="followed()" href="javascript:void(0)" ng-model="currentCar.followers"><span class="ico-user-outline-shape"></span>{{ currentCar.followers }} followers</a></div>
+								<div class="meta-item"><a ng-click="scrollView('add-new-comment')" href="javascript:void(0)" ng-model="currentCar.comments"><span class="ico-speech-bubble-rectangular-chat-symbol"></span>{{ currentCar.comments || 0 }}</a></div>
+							</div>
+							<div class="row">
+								<div class="col s12 m6">
+									<h6 class="car-arch">Basic information</h6>
+									<ul class="list-sep" ng-model="currentCar">
+										<li>Build date: {{ currentCar.buildDate }}. Use since: {{ currentCar.useSience }}</li>
+										<li>Location: {{ currentCar.location }}</li>
+										<li style="display: none;">Engine type: {{ currentCar.engine }}</li>
+										<li>Engine size: {{ currentCar.engine_size }}</li>
+										<li>Capacity: {{ currentCar.capacity }} Hp</li>
+										<li>Drive type: {{ currentCar.car_type }}</li>
+										<li>Car’s number: <span class="black" ng-model="currentCar.car_number" ng-if="currentCar.car_number">{{ currentCar.car_number }}</span></li>
+										<li>Registred on date: {{ currentCar.reg_date }}</li>
+									</ul>
+								</div>
+								<div class="col s12 m6">
+									<h6 class="car-arch">Car’s achivements</h6>
+									<span ng-if="!currentCar.achivements" class="gray">This car hadn't achivements yet.</span>
+									<ul ng-if="currentCar.achivements" class="achivements-list">
+										<li ng-repeat="achive in currentCar.achivements">
+											<div class="icon-left"><span class="{{ achive.icon }}"></span></div>
+											<div class="ach-desc">{{ achive.name }} in <a href="javascript:void(0)">{{ achive.date }}</a></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div id="add-new-entry-form" class="btns-w clearfix">
+								<div ng-click="scrollView('add-new-entry-form')" class="btn-large waves-effect new-entry">add new entry</div>
+							</div>
+							<div id="new-entry-form" ng-model="$fields" style="margin-top: 15px;" class="row new-entry-wrap">
+								<div class="col s12">
+									<form ng-submit="add()">
+										<div class="entry bordered-box">
+											<div class="row">
+												<div class="input-field col s12">
+													<input ng-model="$fields.title" type="text" id="etitle" class="validate">
+													<label data-error="wrong" data-success="right" for="etitle">Entry title</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="input-field col s12 editor-froala-field">
+												  <textarea class="editor-froala" froala ng-model="$fields.text" id="etext"></textarea>
+												</div>
+											</div>
+											<div class="row">
+												<div class="input-field col s12 m6">
+													<md-select ng-model="$fields.language" aria-label="Entry language">
+														<md-option value="none" disabled>Entry language</md-option>
+														<md-option ng-repeat="lang in $helper.languages" ng-value="lang">
+															{{ lang }}
+														</md-option>
+													</md-select>
+												</div>
+												<div class="input-field col s12 m6">
+													<md-select ng-model="$fields.type" aria-label="Entry type">
+														<md-option disabled>Entry type</md-option>
+														<md-option ng-repeat="type in $helper.types" ng-value="type.value">
+															{{ type.label }}
+														</md-option>
+													</md-select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="input-field col s12 m4 l6">
+													<input ng-model="$fields.mileage" type="number" id="mileage">
+													<label class="active" for="mileage">Mileage</label>
+												</div>
+												<div class="input-field col s12 m4 l3">
+													<input ng-model="$fields.expenses" type="number" id="expenses">
+													<label class="active" for="expenses">Expenses</label>
+												</div>
+												<div class="input-field col s12 m4 l3">
+													<md-select ng-model="$fields.currency" aria-label="Currency">
+														<md-option value="" disabled>Currency</md-option>
+														<md-option ng-repeat="currency in $helper.currencies" ng-value="currency">
+															{{ currency }}
+														</md-option>
+													</md-select>
+												</div>
+											</div>
+											<div class="row marg">
+												<div class="input-field col s12">
+													<input type="checkbox" ng-model="$fields.hidden" class="filled-in" id="hidentry">
+													<label for="hidentry">Hidden entry</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col s12" style="margin-bottom: 15px;">
+													<div ng-model="$helper.viewImages" ng-if="$helper.viewImages.length" ng-repeat="(i, image) in $helper.viewImages" class="loading-image">
+														<img src="{{ image }}" style="width: 100%; height: 100%;">
+														<img src="/images/close.svg" ng-click="removeImage(i)" data-name="cattouchret.jpeg" width="20" height="20" style="position: absolute;cursor:pointer;right: 0">
+													</div>
+													<div ng-model="$helper.proccessed" ng-if="$helper.proccessed.length" ng-repeat="(i, preload) in $helper.proccessed" class="loading-image">
+														<p>Uploading...</p>
+														<div style="width: {{ preload.percent }}" class="inner-loading-image"></div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col s12 m6">
+													<button class="waves-effect btn-large full" type="submit" name="send">submit</button>
+												</div>
+												<div class="col s12 m6">
+													<div class="btn-gray btn-ui waves-effect">
+														<input ng-model="$helper.images" type="file" onloadend="addImages" multiple base-sixty-four-input>
+														<span class="ico-photo-camera-outlined-interface-symbol"></span>
+													</div>
+													<a style="display: none;" class="btn-gray btn-ui waves-effect popup-form" href="#addvideo"><span class="ico-video-camera"></span></a>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="journal-entries-view" class="garage-block journal-entries">
+						<div class="row">
+							<div class="col s12 m8 l9">
+								<h5>Car's journal <a href="javascript:void(0)" class="gray" ng-model="all_entries">{{ all_entries.length }}</a></h5>
+							</div>
+							<div ng-model="currentCar.journal.entries" ng-if="currentCar.journal.entries.length" class="col s12 m4 l3 input-field">
+								<md-input-container style="width: 100%">
+									<label>Sort entries</label>
+									<md-select ng-model="$sorting" ng-change="entriesSort()" aria-label="">
+										<md-option value="title">Sort by name</md-option>
+										<md-option value="tags.name">Sort by tags</md-option>
+										<md-option value="created_at">Sort by date</md-option>
+									</md-select>
+								</md-input-container>
+							</div>
+						</div>
+						<span ng-model="currentCar.journal.entries" ng-if="!currentCar.journal.entries.length" class="gray">This car hadn't entries yet.</span>
+						<div ng-model="currentCar.journal.entries" ng-if="currentCar.journal.entries.length" ng-repeat="entry in currentCar.journal.entries" class="journal-entry clearfix">
+							<div class="jentry-preview hide-on-small-only">
+								<img ng-if="entry.images && entry.images[0].src" src="{{ entry.images[0].src }}" alt="{{ entry.images[0].description }}">
+							</div>
+							<a ui-sref="dash.myjournal-list({journalID: currentCar.journal.id, entryID: entry.id})">
+								<div class="jentry-body jentry-body-linked">
+									<!--<h5 style="
+										    padding: 0;
+										    margin: -10px 0 0;
+										    line-height: 18px;
+										    font-size: 18px;
+										" class="truncate" ng-model="entry.title">{{ entry.title }}</h5>-->
+									<h6 class="truncate">
+										<span style="
+										    float: left;
+										    line-height: 19px;
+										    margin-right: 5px;
+										" ng-if="entry.type === 2" class="jentry-type">MILEAGE</span>
+										<span style="
+										    float: left;
+										    line-height: 19px;
+										    margin-right: 5px;
+										" ng-if="entry.type === 1" class="jentry-type">Expenses</span> <span class="entry-fix-text" ng-model="entry.text" ng-bind-html="entry.text | limitHtml : 350 : '' | trustAsHtml"></span></h6>
+									<div class="more">read more</div>
+								</div>
+							</a>
+							<div class="jentry-body">
+								<a style="pointer-events: none;" href="javascript:void(0)" class="jentry-cat">photos</a>
+								<div id="entry_pic_{{ entry.id }}" class="col s12" style="margin-bottom: 10px;">
+									<div ng-model="entry.images" ng-repeat="(i, img) in entry.images | before:5" class="col s2 item-{{ i }}" style="max-height: 100px; overflow: hidden; margin-bottom: 10px; position: relative;" data-src="{{ img.src }}">
+										<a id="entry_img_{{ entry.id }}" href="{{ img.src }}" fancyboxable>
+											<img src="{{ img.src }}" alt="{{ img.description }}" style="width: 100%; cursor: pointer;" />
+										</a>
+										<div ng-click="showAllImages(entry)" ng-if="!entry.showAllImages && i === 3 && (entry.images.length - 4) > 0" ng-model="entry.images" style="
+										    position: absolute;
+										    top: 0;
+										    left: 10px;
+										    width: calc(100% - 20px);
+										    height: 100%;
+										    background: rgba(0,0,0,.5);
+										    z-index: 50;
+										    cursor: pointer;
+										">
+											<p style="
+											    color: #f1f1f1;
+											    font-size: 30px;
+											    line-height: 45px;
+											    text-align: center;
+											" ng-model="entry.images" >+{{ entry.images.length - 4 }}</p>
+										</div>
+									</div>
+									<div ng-model="entry" ng-if="entry.showAllImages" ng-repeat="(i, img) in entry.images | after:4" class="col s2 item-{{ i }}" style="max-height: 100px; overflow: hidden; margin-bottom: 10px; position: relative;" data-src="{{ img.src }}">
+										<a id="entry_img_{{ entry.id }}" href="{{ img.src }}" fancyboxable>
+											<img src="{{ img.src }}" alt="{{ img.description }}" style="width: 100%; cursor: pointer;" />
+										</a>
+									</div>
+								</div>
+								<div class="block-meta">
+									<div class="meta-item" ng-model="entry.created_at"><span class="ico-empty-daily-calendar-page"></span>Posted <span am-time-ago="entry.created_at | amFromUnix"></span></div>
+									<div class="meta-item"><a href="javascript:void(0)" ng-click="like(entry)" ng-model="entry.likes"><span class="ico-heart-outline"></span>{{ entry.likes || 0 }}</a></div>
+									<div class="meta-item"><a href="javascript:void(0)" ng-model="entry.comments"><span class="ico-speech-bubble-rectangular-chat-symbol"></span>{{ entry.comments || 0 }}</a></div>
+								</div>
+								<div class="col s12" ng-if="profile.user_id === carOwner">
+									<div class="row">
+										<div class="col s12">
+											<button style="margin: 0 15px;" ng-model="entry" ng-click="removeEntry(entry)" class="btn-large waves-effect right">remove entry</button>
+											<button ng-model="entry" ng-click="editEntry(entry)" class="btn-large waves-effect right">edit entry</button>
+										</div>
+									</div>
+									<div ng-model="$edit_fields" ng-if="$edit_fields.id === entry.id" class="row">
+									<div class="col s12" style="margin: 15px 0;">
+										<form ng-submit="edit()">
+											<div class="entry bordered-box" style="padding: 30px 30px 20px;">
+												<div class="row">
+													<div class="input-field col s12">
+														<input ng-model="$edit_fields.title" type="text" id="etitle" class="validate">
+														<label class="active" data-error="wrong" data-success="right" for="etitle">Entry title</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12 editor-froala-field">
+													  <textarea class="editor-froala" froala ng-model="$edit_fields.text" id="etext"></textarea>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12 m6">
+														<md-select ng-model="$edit_fields.language" aria-label="Entry language">
+															<md-option value="none" disabled>Entry language</md-option>
+															<md-option ng-repeat="lang in $helper.languages" ng-value="lang">
+																{{ lang }}
+															</md-option>
+														</md-select>
+													</div>
+													<div class="input-field col s12 m6">
+														<md-select ng-model="$edit_fields.type" aria-label="Entry type">
+															<md-option disabled>Entry type</md-option>
+															<md-option ng-repeat="type in $helper.types" ng-value="type.value">
+																{{ type.label }}
+															</md-option>
+														</md-select>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12 m4 l6">
+														<input ng-model="$edit_fields.mileage" type="number" id="mileage">
+														<label class="active" for="mileage">Mileage</label>
+													</div>
+													<div class="input-field col s12 m4 l3">
+														<input ng-model="$edit_fields.expenses" type="number" id="expenses">
+														<label class="active" for="expenses">Expenses</label>
+													</div>
+													<div class="input-field col s12 m4 l3">
+														<md-select ng-model="$edit_fields.currency" aria-label="Currency">
+															<md-option value="" disabled>Currency</md-option>
+															<md-option ng-repeat="currency in $helper.currencies" ng-value="currency">
+																{{ currency }}
+															</md-option>
+														</md-select>
+													</div>
+												</div>
+												<div class="row marg">
+													<div class="input-field col s12">
+														<input type="checkbox" ng-model="$edit_fields.hidden" class="filled-in" id="hidentry">
+														<label for="hidentry">Hidden entry</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col s12 m6">
+														<div class="col m6 s12">
+															<button class="waves-effect btn-large full" type="submit" name="send">update</button>
+														</div>
+														<div class="col m6 s12">
+															<button class="waves-effect btn-large full" ng-click="disableEditEntry()" type="button" name="send">cancel</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-model="currentCar.journal.entries" ng-if="currentCar.journal.entries.length > 0" class="row">
+							<a ui-sref="dash.myjournal-list({journalID: currentCar.journal.id, entryID: 0})" class="btn-large full btn-gray waves-effect waves more-btn">view all entries</a>
+						</div>
+					</div>
+					<div id="add-new-comment" class="garage-block">
+						<h5>Comments <a href="javascript:void(0)" class="gray" ng-model="currentCar.comments">{{ currentCar.comments }}</a></h5>
+						<span ng-model="currentCar.commentsList" ng-if="!currentCar.commentsList.length" class="gray">This car hadn't  comments yet.</span>
+						<div class="bottom-entry">
+							<div class="u-avatar round small">
+								<img ng-model="profile.avatar" ng-if="profile.avatar" src="{{ profile.avatar }}" alt="user avatar">
+							</div>
+							<div class="comment-body">
+								<form ng-submit='addComment()'>
+								<div class="row">
+									<div class="input-field col s12 editor-froala-field">
+									  <textarea class="editor-froala" froala ng-model="$comment.text" id="text-comment"></textarea>
+									  <label for="entry-text">Add a comment</label>
+									</div>
+									<div class="row">
+										<div class="col s12" style="margin-bottom: 15px;">
+											<div ng-model="$helper_comment.viewImages" ng-if="$helper_comment.viewImages.length" ng-repeat="(i, image) in $helper_comment.viewImages" class="loading-image">
+												<img src="{{ image }}" style="width: 100%; height: 100%;">
+												<img src="/images/close.svg" ng-click="removeCommentImage(i)" data-name="cattouchret.jpeg" width="20" height="20" style="position: absolute;cursor:pointer;right: 0">
+											</div>
+											<div ng-model="$helper_comment.proccessed" ng-if="$helper_comment.proccessed.length" ng-repeat="(i, preload) in $helper_comment.proccessed" class="loading-image">
+												<p>Uploading...</p>
+												<div style="width: {{ preload.percent }}" class="inner-loading-image"></div>
+											</div>
+										</div>
+									</div>
+									<div class="col s12">
+										<button type="submit" class="waves-effect btn-large">add a comment</button>
+										<div style="display: none;" class="btn-gray btn-ui waves-effect">
+											<input ng-model="$helper_comment.images" type="file" onloadend="addCommentImages" multiple base-sixty-four-input>
+											<span class="ico-photo-camera-outlined-interface-symbol"></span>
+										</div>
+									</div>
+								</div>
+								</form>
+							</div>
+						</div>
+						<div ng-model="currentCar.commentsList" ng-if="currentCar.commentsList.length" class="car-comments">
+							<div ng-model="currentCar.commentsList" ng-repeat="comment in currentCar.commentsList" class="entry-comment">
+								<div class="u-avatar round small">
+									<img ng-model="comment.account.avatar" src="{{ comment.account.avatar }}" alt="user avatar">
+								</div>
+								<div class="comment-body">
+									<div style="display: none;" class="c-menu-wrap">
+										<span class="c-menu round"></span>
+									</div>
+									<ul class="c-menu-actions hide">
+										<li><a href="javascript:void(0)">Add to blacklist</a></li>
+										<li><a href="javascript:void(0)">Delete comment</a></li>
+									</ul>
+									<div class="top-entry-meta">
+										<a target="_blank" ng-model="comment.account" href="/user/account/view?id={{ comment.account.user_id }}">{{ comment.account.first_name }} {{ comment.account.last_name }}</a>
+										<div class="u-rating" ng-model="comment.account.favorites" ><span class="ico-favorites-star-outlined-symbol"></span>{{ comment.account.favorites || 0 }} <span class="answer-label" ng-model="comment.answer_comment_id" ng-if="comment.answer_comment_id !== '0'">answered to {{ getAnswerUser(comment.answer_comment_id) }}</span></div>
+										<div class="entry-date">
+											Posted on <span ng-model="comment.created_at" am-time-ago="comment.created_at | amFromUnix"></span>
+										</div>
+									</div>
+									<p ng-bind-html="comment.message | trustAsHtml"></p>
+									<div class="comment-footer clearfix">
+										<div ng-click="answerForm(comment);" class="answer">answer</div>
+										<div class="like">
+											<a href="javascript:void(0)" ng-click="like(comment, 'comment')" ng-model="comment.likes"><span class="ico-heart-outline"></span>{{ comment.likes || 0 }}</a></div>
+										<div class="c-options">
+											<a style="display: none;" href="javascript:void(0)" class="spam">spam</a>
+										</div>
+									</div>
+									<div ng-model="comment.answerForm" ng-class="{'': !comment.answerForm, 'make-visible': comment.answerForm }" class="bottom-entry">
+										<div class="u-avatar round small">
+											<img ng-model="comment.account.avatar" src="{{ comment.account.avatar }}" alt="user avatar">
+										</div>
+										<div class="comment-body">
+											<form ng-submit='answerSubmit(comment)' ng-model="$comment">
+											<div class="input-field col s12 editor-froala-field">
+											  <textarea class="editor-froala" froala ng-model="$comment.text" id="text-comment"></textarea>
+											  <label for="entry-text">Add a comment</label>
+											</div>
+											<div class="row">
+												<div class="col s12" style="margin-bottom: 15px;">
+													<div ng-model="$helper_comment.viewImages" ng-if="$helper_comment.viewImages.length" ng-repeat="(i, image) in $helper_comment.viewImages" class="loading-image">
+														<img src="{{ image }}" style="width: 100%; height: 100%;">
+														<img src="/images/close.svg" ng-click="removeCommentImage(i)" data-name="cattouchret.jpeg" width="20" height="20" style="position: absolute;cursor:pointer;right: 0">
+													</div>
+												</div>
+											</div>
+											<div class="col s12">
+												<button type="submit" class="waves-effect btn-large">answer</button>
+												<div style="display: none;" class="btn-gray btn-ui waves-effect">
+													<input ng-model="$helper_comment.images" type="file" onloadend="addCommentImages" multiple base-sixty-four-input>
+													<span class="ico-photo-camera-outlined-interface-symbol"></span>
+												</div>
+											</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a ng-model="currentCar.commentsAll" ng-if="currentCar.commentsAll.length > 10 && !allComments" ng-click="showAllComments()" href="javascript:void(0)" class="btn-large full btn-gray waves-effect waves more-btn">view all comments</a>
+						<a ng-model="currentCar.commentsAll" ng-if="currentCar.commentsAll.length > 10 && allComments" ng-click="showAllComments()" href="javascript:void(0)" class="btn-large full btn-gray waves-effect waves more-btn">hide all comments</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /wrapper -->

@@ -1,0 +1,476 @@
+	
+	<!-- Car of the day -->
+	<div ng-model="profile" ng-if="profile !== null" class="section top-car">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m7 l8">
+					<h5>Car of the day</h5>
+					<div class="top-car-wrap" style="background-image:url(images/top-car.jpg)">
+						<div class="top-car-top-block clearfix">
+							<h4 class="truncate"><a href="#">Mercedes C200 AMG</a></h4>
+							<div class="top-car-rating">
+								<span class="ico-favorites-star-outlined-symbol"></span> 540
+							</div>
+							<div class="top-car-meta">
+								<div class="meta-item"><span class="ico-empty-daily-calendar-page"></span>27.10.2016</div>
+								<div class="meta-item"><span class="ico-maps-placeholder-outlined-tool"></span>Dubai</div>
+							</div>
+						</div>
+						<div class="top-car-bottom-block center">
+							<a class="btn-large btn-liner waves-effect" href="#">select car of the day</a>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m5 l4">
+					<h5>Candidats</h5>
+					<ul class="candidats-slider">
+						<li style="background-image:url(images/candidat1.jpg)">
+							<div class="top-car-top-block clearfix">
+								<h6 class="truncate"><a href="#">Mercedes C200 AMG</a></h6>
+								<div class="top-car-meta">
+									<div class="meta-item"><span class="ico-favorites-star-outlined-symbol"></span>540</div>
+									<div class="meta-item"><span class="ico-maps-placeholder-outlined-tool"></span>Dubai</div>
+								</div>
+							</div>
+						</li>
+						<li style="background-image:url(images/candidat2.jpg)">
+							<div class="top-car-top-block clearfix">
+								<h6 class="truncate"><a href="#">Mercedes C200 AMG</a></h6>
+								<div class="top-car-meta">
+									<div class="meta-item"><span class="ico-favorites-star-outlined-symbol"></span>540</div>
+									<div class="meta-item"><span class="ico-maps-placeholder-outlined-tool"></span>Dubai</div>
+								</div>
+							</div>
+						</li>
+						<li style="background-image:url(images/candidat3.jpg)">
+							<div class="top-car-top-block clearfix">
+								<h6 class="truncate"><a href="#">Mercedes C200 AMG</a></h6>
+								<div class="top-car-meta">
+									<div class="meta-item"><span class="ico-favorites-star-outlined-symbol"></span>540</div>
+									<div class="meta-item"><span class="ico-maps-placeholder-outlined-tool"></span>Dubai</div>
+								</div>
+							</div>
+						</li>
+						<li style="background-image:url(images/candidat1.jpg)">
+							<div class="top-car-top-block clearfix">
+								<h6 class="truncate"><a href="#">Mercedes C200 AMG</a></h6>
+								<div class="top-car-meta">
+									<div class="meta-item"><span class="ico-favorites-star-outlined-symbol"></span>540</div>
+									<div class="meta-item"><span class="ico-maps-placeholder-outlined-tool"></span>Dubai</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Car of the day -->
+		
+	<!-- City block -->
+	<div class="section city gray-section">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<h5>Select city</h5>
+				</div>
+			</div>
+			<div ng-model="cities" ng-class="{'hide-loading-item': cities !== null, '': cities === null }" class="row">
+				<div ng-model="cities" ng-if="!cities.length && cities !== null" class="col s12">
+					<div class="alert-box-none">
+						No found any city for select.
+					</div><span class="gray">
+				</div>
+				<div ng-model="cities" id="city-wrap" ng-if="cities.length && cities !== null">
+					<div class="city-item">
+						<div class="city-bg">
+							<div class="city-preview">
+								<a href="#"><img src="images/city1.jpg" alt="city"></a>
+							</div>
+							<div class="city-info center">
+								<h6 class="truncate"><a href="#">Dubai</a></h6>
+								<p class="truncate"><span class="ico-user-outline-shape"></span>167 688 users</p>
+							</div>
+						</div>
+					</div>
+					<div class="city-item">
+						<div class="city-bg">
+							<div class="city-preview">
+								<a href="#"><img src="images/city2.jpg" alt="city"></a>
+							</div>
+							<div class="city-info center">
+								<h6 class="truncate"><a href="#">Dubai</a></h6>
+								<p class="truncate"><span class="ico-user-outline-shape"></span>167 688 users</p>
+							</div>
+						</div>
+					</div>
+					<div class="city-item">
+						<div class="city-bg">
+							<div class="city-preview">
+								<a href="#"><img src="images/city3.jpg" alt="city"></a>
+							</div>
+							<div class="city-info center">
+								<h6 class="truncate"><a href="#">Dubai</a></h6>
+								<p class="truncate"><span class="ico-user-outline-shape"></span>167 688 users</p>
+							</div>
+						</div>
+					</div>
+					<div class="city-item">
+						<div class="city-bg">
+							<div class="city-preview">
+								<a href="#"><img src="images/city4.jpg" alt="city"></a>
+							</div>
+							<div class="city-info center">
+								<h6 class="truncate"><a href="#">Dubai</a></h6>
+								<p class="truncate"><span class="ico-user-outline-shape"></span>167 688 users</p>
+							</div>
+						</div>
+					</div>
+					<div class="city-item">
+						<div class="city-bg">
+							<div class="city-preview">
+								<a href="#"><img src="images/city5.jpg" alt="city"></a>
+							</div>
+							<div class="city-info center">
+								<h6 class="truncate"><a href="#">Dubai</a></h6>
+								<p class="truncate"><span class="ico-user-outline-shape"></span>167 688 users</p>
+							</div>
+						</div>
+					</div>
+					<div class="city-item">
+						<div class="city-bg">
+							<div class="city-preview">
+								<a href="#"><img src="images/city1.jpg" alt="city"></a>
+							</div>
+							<div class="city-info center">
+								<h6 class="truncate"><a href="#">Dubai</a></h6>
+								<p class="truncate"><span class="ico-user-outline-shape"></span>167 688 users</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /City block -->
+	
+	<!-- Car's journals block -->
+	<div class="section journals">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="heading center">
+						<h4>Car’s journals</h4>
+						<div class="heading-separator">
+							<img src="images/arba.png" alt="separator">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-model="journals" ng-class="{'hide-loading-item': journals !== null, '': journals === null }" class="row">
+				<div ng-model="journals" ng-if="!journals.length && journals !== null" class="col s12">
+					<div class="alert-box-none">
+						No found any journals for select.
+					</div><span class="gray">
+				</div>
+				<div ng-model="journals" ng-if="journals.length && journals !== null" class="col s12 m6 l3 journal">
+					<div class="journal-wrap">
+						<a href="#">
+							<div class="block-preview" style="background-image:url(images/journal1.jpg);"></div>
+						</a>
+						<div class="block-padding">
+							<h5 class="trancute"><a href="#">Mercedes CLA200</a></h5>
+							<p class="sub-heading truncate">My favorite car</p>
+							<div class="block-info">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<a href="#" class="more">read more</a>
+							</div>
+							<div class="block-meta">
+								<div class="meta-item"><span class="ico-visible-eye-visibility-interface-symbol"></span>1167</div>
+								<div class="meta-item"><span class="ico-favorites-star-outlined-symbol"></span>25</div>
+								<div class="meta-item"><span class="ico-heart-outline"></span>100</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 center">
+					<a class="btn-large waves-effect" href="#">see all</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Car's journals block -->
+	
+	<!-- User's blogs-->
+	<div class="section gray-section blogs">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="heading center">
+						<h4>Blogs</h4>
+						<div class="heading-separator">
+							<img src="images/arba.png" alt="separator">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-model="blogs" ng-class="{'hide-loading-item': blogs !== null, '': blogs === null }" class="row">
+				<div ng-model="blogs" ng-if="!blogs.length && blogs !== null" class="col s12">
+					<div class="alert-box-none">
+						No found any blogs for select.
+					</div><span class="gray">
+				</div>
+				<div ng-model="blogs" ng-if="blogs.length && blogs !== null" class="col s12 m6 l3 blog">
+					<div class="blog-wrap">
+						<a href="#">
+							<div class="block-preview" style="background-image:url(images/blog1.jpg);"></div>
+						</a>
+						<div class="block-padding">
+							<div class="block-info">
+								<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
+							</div>
+							<div class="block-meta clearfix">
+								<a href="#">
+									<div class="avatar round" style="background-image:url(images/u-avatar1.jpg);"></div>
+									<p>Aahil Asad</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 center">
+					<a class="btn-large btn-liner waves-effect" href="#">see all</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /User's blogs-->
+	
+	<!-- Communities block-->
+	<div class="section communities">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="heading center">
+						<h4>Communities</h4>
+						<div class="heading-separator">
+							<img src="images/arba.png" alt="separator">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-model="communities" ng-class="{'hide-loading-item': communities !== null, '': communities === null }" class="row">
+				<div ng-model="communities" ng-if="!communities.length && communities !== null" class="col s12">
+					<div class="alert-box-none">
+						No found any blogs for select.
+					</div><span class="gray">
+				</div>
+				<div ng-model="communities" ng-if="communities.length && communities !== null" class="col s12 m6 l3 community">
+					<div class="community-wrap">
+						<a href="#">
+							<div class="block-preview" style="background-image:url(images/community1.jpg);"></div>
+						</a>
+						<div class="block-padding">
+							<div class="block-meta clearfix">
+								<div class="avatar round" style="background-image:url(images/community-ava1.jpg);"></div>
+								<div class="community-info">
+									<div class="community-info-inner">
+										<h5 class="trancute"><a href="#">BMW Lovers Club</a></h5>
+										<p><span class="ico-user-outline-shape"></span>19889 members</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 center">
+					<a class="btn-large waves-effect" href="#">see all</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Communities block-->
+	
+	<!-- Companies block-->
+	<div class="section companies gray-section">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="heading center">
+						<h4>Companies</h4>
+						<div class="heading-separator">
+							<img src="images/arba.png" alt="separator">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-model="companies" ng-class="{'hide-loading-item': companies !== null, '': companies === null }" class="row">
+				<div ng-model="companies" ng-if="!companies.length && companies !== null" class="col s12">
+					<div class="alert-box-none">
+						No found any companies for select.
+					</div><span class="gray">
+				</div>
+				<div ng-model="companies" ng-if="companies.length && companies !== null" class="col s12 m6 l3 company">
+					<div class="company-wrap">
+							<div class="block-preview" style="background-image:url(images/company1.jpg);">
+								<div class="preview-info clearfix">
+									<div class="rating">
+										<span class="ico-favorites-star-outlined-symbol"></span>Arba rating:   544
+									</div>
+								</div>
+							</div>
+						<div class="block-padding">
+							<div class="block-info">
+								<h6 class="truncate"><a href="#">Mercedes-Benz Service</a></h6>
+								<ul>
+									<li>Financial Centre Road,Downtown Dubai</li>
+									<li>mercedes@uae.ae</li>
+									<li>+971 800 382246255</li>
+									<li>www.mercedes.ae</li>
+								</ul>
+							</div>
+							<div class="brands-wrap">
+								<div class="brand b1"></div>
+								<div class="brand b2"></div>
+								<div class="brand b3"></div>
+								<div class="brand b4"></div>
+								<div class="brand b5"></div>
+								<div class="brand b6"></div>
+							</div>
+							<ul>
+								<li>Painting</li>
+								<li>Oil changes</li>
+								<li>Car engine repair</li>
+								<li>Body car service</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 center">
+					<a class="btn-large btn-liner waves-effect" href="#">see all</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Companies block-->
+	
+	<!-- Promo block-->
+	<div class="section promo">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="heading center">
+						<h4>Promo</h4>
+						<div class="heading-separator">
+							<img src="images/arba.png" alt="separator">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-model="promo" ng-class="{'hide-loading-item': promo !== null, '': promo === null }" class="row">
+				<div ng-model="promo" ng-if="!promo.length && promo !== null" class="col s12">
+					<div class="alert-box-none">
+						No found any promo for select.
+					</div><span class="gray">
+				</div>
+				<div ng-model="promo" ng-if="promo.length && promo !== null" class="col s12 m6 l6 promo-item">
+					<div class="promo-wrap">
+							<div class="block-preview">
+								<div class="preview-info clearfix">
+									<div class="rating">
+										<span class="ico-favorites-star-outlined-symbol"></span>Arba rating:   544
+									</div>
+								</div>
+								<img src="images/promo1.jpg" alt="promo">
+							</div>
+						<div class="block-padding">
+							<div class="block-info">
+								<h6 class="truncate"><a href="#">50% Discount on car repair</a></h6>
+								<ul>
+									<li><span class="ico-maps-placeholder-outlined-tool"></span>Dubai</li>
+									<li><span class="ico-empty-daily-calendar-page"></span>01.11.2016-01.12.2016</li>
+									<li><span class="ico-helm-wheel"></span>Oil changes</li>
+								</ul>
+							</div>
+							<div class="brands-wrap">
+								<div class="brand b16"></div>
+								<div class="brand b17"></div>
+								<div class="brand b18"></div>
+								<div class="brand b19"></div>
+								<div class="brand b20"></div>
+								<div class="brand b21"></div>
+								<div class="brand b22"></div>
+							</div>
+						</div>
+						<div class="share-block">
+							<div class="share-item">
+								<a href="#"><span class="ico-heart-outline"></span>144</a>
+							</div>
+							<div class="share-item">
+								<a href="#"><span class="ico-upload-symbol"></span>144</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 center">
+					<a class="btn-large waves-effect" href="#">see all</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Promo block-->
+		
+	<!-- Signin popup -->
+	<form ng-submit="signin()" id="signin" class="white-popup-block mfp-hide">
+		<div class="row">
+			<div class="col s12">
+				<div class="heading center">
+					<h4>Authorization</h4>
+					<div class="heading-separator">
+						<img src="images/arba.png" alt="separator">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+			  <input ng-model="$fields.username" id="name" name="name" type="text" class="validate">
+			  <label class="active" for="name" data-error="wrong" data-success="right">Login</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+			  <input ng-model="$fields.password" id="password" name="password" type="password" class="validate">
+			  <label class="active" for="password" data-error="wrong" data-success="right">Password</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				<button class="waves-effect btn-large" type="submit" name="action">login</button>
+				<a href="javascript:void(0)" class="fgt-pw">Forgot your password?</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				<div class="oauth-wrap">
+					<h6>Or sign in with:</h6>
+					<ul class="clearfix">
+						<li><a href="#" class="fb"><span class="ico-facebook"></span></a></li>
+						<li><a href="#" class="tw"><span class="ico-twitter"></span></a></li>
+						<li><a href="#" class="in"><span class="ico-instagram"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- /Signin popup -->

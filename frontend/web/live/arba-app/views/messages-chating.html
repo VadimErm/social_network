@@ -1,0 +1,134 @@
+<!-- wrapper -->
+<div class="section messages dialog-single">
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<h5>My messages</h5>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m12 l3">
+				<aside class="htabs-wrap">
+					<a class="btn-large waves-effect full" ui-sref="dash.messages({type: 'all'})">back to dialogs</a>
+					<ul class="bordered-box edit-menu">
+						<li class="profile-info-row">
+							<a href="javascript:void(0)">Block user</a>
+						</li>
+						<li class="profile-info-row">
+							<a href="javascript:void(0)" ng-click="clearDialog()">Clear history</a>
+						</li>
+						<li class="profile-info-row">
+							<a href="javascript:void(0)">Delete dialog</a>
+						</li>
+					</ul>
+				</aside>
+			</div>
+			<div class="col s12 m12 l9 messages-content">
+				<div class="row">
+					<md-input-container class="col s12">
+						<label>Search</label>
+						<input ng-model="searchString" ng-change="search()">
+					</md-input-container>
+				</div>
+				<div class="alert-box bordered-box clearfix">
+					<span class="line-p">
+						<span class="alert-info">
+							<span ng-model="$selected" class="bolder">{{ $selected.length }} messages</span>
+						</span>
+						<a ng-model="$selected" ng-class="{'half-hidden': !$selected.length, '': $selected.length}" href="javascript:void(0)">Forward</a>
+						<a ng-model="$selected" ng-class="{'half-hidden': !$selected.length, '': $selected.length}" href="javascript:void(0)">Delete</a>
+					</span>
+				</div>
+				<div class="dialogs-outer">
+					<div class="dialogs-inner">
+						<ul class="dialogs-wrap">
+							<li ng-model="messages" ng-if="messages.length" ng-repeat="(i, message) in messages | filterBy:'-created_at'" class="fuser-row clearfix" ng-class="{'my-message': message.author_id === profile.user_id, 'blue lighten-5': message.receiver_id === profile.user_id && message.readed === 0 && message.author_id !== profile.user_id}">
+								<div ng-click="selectItem(i)" ng-class="{'active': isSelected(message.id), '': !isSelected(message.id)}" class="sel-message"></div>
+								<div class="u-avatar round small">
+									<img ng-model="message.author.avatar" src="{{ message.author.avatar }}" alt="user avatar">
+								</div>
+								<div class="u-body">
+									<a target="_blank" ng-model="message.author" href="/user/account/view?id={{ message.account.user_id }}" class="bolder">{{ message.author.first_name }} {{ message.author.last_name }}</a>
+									<div class="entry-date">Posted <span ng-model="message.created_at" am-time-ago="message.created_at | amFromUnix"></span></div>
+									<p class="sub-title" ng-model="message.text" ng-bind-html="message.text | trustAsHtml"></p>
+									<div ng-model="message.images" ng-if="message.images.length" class="row" style="margin: 5px 0;">
+										<div ng-model="message.images" ng-repeat="img in message.images" class="col s2" style="max-height: 100px; overflow: hidden;" data-src="{{ img.src }}">
+											<a id="entry_img_{{ entry.id }}" href="{{ img.src }}" fancyboxable>
+												<img src="{{ img.src }}" alt="{{ img.description }}" style="width: 100%; cursor: pointer;" />
+											</a>
+										</div>
+									</div>
+									<div ng-model="message.videos" ng-if="message.videos.length" class="row" style="margin: 5px 0;">
+										<div ng-model="message.videos" ng-repeat="video in message.videos" class="col s12 m6" style="max-height: 200px; overflow: hidden;" data-src="{{ img.src }}">
+											<youtube-video style="width: 100%;max-height: 200px;" class="embed-responsive-item" ng-model="video.src" video-url="video.src"></youtube-video>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li ng-model="messages" ng-if="!messages.length" class="fuser-row clearfix">
+								<div class="col s12">
+									<p class="sub-title">
+										You hadn't any messages with this user yet.
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pos-rel">
+					<div class="bordered-box add-post">
+						<div class="bordered-box-content">
+							<div class="row">
+								<form ng-submit="send()" ng-model="$fields">
+									<div class="col s12">
+									  	<md-input-container class="md-block">
+											<label>Message</label>
+											<textarea ng-model="$fields.text" md-maxlength="500" rows="3" md-select-on-focus></textarea>
+								        </md-input-container>
+									</div>
+									<div class="col s12" style="margin-bottom: 15px;">
+										<div ng-model="$helper.viewImages" ng-if="$helper.viewImages.length" ng-repeat="(i, image) in $helper.viewImages" class="loading-image">
+											<img src="{{ image }}" style="width: 100%; height: 100%;">
+											<img src="/images/close.svg" ng-click="removeImage(i)" data-name="cattouchret.jpeg" width="20" height="20" style="position: absolute;cursor:pointer;right: 0">
+										</div>
+									</div>
+									<div ng-model="$fields.newVideo" ng-if="$fields.newVideo !== false" class="row" style="margin-bottom: 10px;">
+										<div class="col s12">
+											<div ng-model="$fields.videos" ng-repeat="(i, url) in $fields.videos" class="col s12 m6" style="margin: 5px 0px;display: table;position: relative;">
+												<youtube-video style="width: 100%;max-height: 300px;" class="embed-responsive-item" ng-model="url" video-url="url"></youtube-video>
+												<img src="/images/close.svg" ng-click="removeVideo(i)" data-name="cattouchret.jpeg" width="20" height="20" style="position: absolute;cursor:pointer;right: 12px; top: 1px;">
+											</div>
+											<div class="col s12" style="margin: 5px 0;">
+												<div class="col s12 m9">
+													<md-input-container class="md-block">
+														<label>Video URL</label>
+														<input ng-model="$fields.newVideo" />
+													</md-input-container>
+												</div>
+												<div class="col s12 m3">
+													<button type="button" style="margin-bottom: 5px;" ng-click="addVideo()" class="waves-effect btn-large">Add Video</button>
+													<button type="button" ng-click="hideVideo()" class="waves-effect btn-large">Clear</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col s12">
+										<button type="submit" class="waves-effect btn-large">submit</button>
+										<div class="btn-gray btn-ui waves-effect">
+											<input ng-model="$helper.images" type="file" onloadend="addImages" multiple base-sixty-four-input>
+											<span class="ico-photo-camera-outlined-interface-symbol"></span>
+										</div>
+										<a class="btn-gray btn-ui waves-effect" ng-model="$fields.newVideo" ng-click="showVideo()" href="javascript:void(0)">
+											<span class="ico-video-camera"></span>
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /wrapper -->

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="arbaLiveApp">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- Mobile meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+	    <title ng-model="pageTitle" ng-if="!pageTitle">Arba.ae / Loading</title>
+	    <title ng-model="pageTitle" ng-if="pageTitle">Arba.ae / {{ pageTitle }}</title>
+	    <meta name="description" content="">
+	    <meta name="keywords" content="">
+		
+		<!----------------------------------------------------------------------
+		  -
+		  - ARBA.AE - STYLES
+		  -
+		  --------------------------------------------------------------------->
+		  
+	    <!-- Favicons -->
+	    <link rel="shortcut icon" href="arba-assets/images/favicon.ico">
+		<link rel="apple-touch-icon" href="arba-assets/images/apple-touch-icon.png">
+	    <!-- Fonts -->
+		<link href="arba-assets/css/fonts.css" rel="stylesheet">
+		<!-- Library CSS -->
+		<link href="arba-assets/css/icons.css" rel="stylesheet">
+		<!-- Theme CSS -->
+		<link href="arba-assets/css/materialize.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="angular.js/vendor/bower/angular-material/angular-material.min.css">
+		
+		<link href="arba-assets/css/jquery.bxslider.css" rel="stylesheet">
+		<link href="arba-assets/css/owl.carousel.css" rel="stylesheet">
+		<!-- Popup CSS -->
+		<link href="arba-assets/css/magnific-popup.min.css" rel="stylesheet">
+		<!-- /Popup CSS -->
+		<link href="arba-assets/css/style.css" rel="stylesheet">
+		
+		<!----------------------------------------------------------------------
+		  -
+		  --------- ARBA.AE - STYLES
+		  -
+		  --------------------------------------------------------------------->
+		
+		<!----------------------------------------------------------------------
+		  -
+		  - AngularJS - STYLES
+		  -
+		  --------------------------------------------------------------------->
+		
+		<!-- SWEETALERTS -->
+		<link href="angular.js/vendor/bower/sweetalert/dist/sweetalert.css" rel="stylesheet">
+		
+		<!-- ANGULAR FANCYBOX -->
+		<link href="angular.js/vendor/bower/fancybox-plus/css/jquery.fancybox-plus.css" rel="stylesheet">
+		
+		<!-- AngularJS Editor Froala -->
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/froala_editor.min.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/froala_style.min.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/char_counter.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/code_view.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/colors.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/emoticons.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/file.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/fullscreen.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/image_manager.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/image.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/line_breaker.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/table.css" rel="stylesheet">
+		<link href="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/css/plugins/video.css" rel="stylesheet">
+		
+		<!-- AngularJS Notify Icons -->
+		<link href="angular.js/vendor/bower/angular-notification-icons/dist/angular-notification-icons.css" rel="stylesheet">
+        
+        <style type="text/css">
+	        
+	    	/* PROFILE SHOW */
+	    	#profile-header-menu, #non-profile-header-menu{
+		    	transform: translateY(-100%) !important;
+	    	}    
+	    	#profile-header-menu.wake-up, #non-profile-header-menu.wake-up{
+		    	transform: translateY(0%) !important;
+	    	}
+	    	
+	    	/* Hide preload items */
+	    	.preload-items{
+				opacity: 0;
+				position: relative;
+		    	-webkit-transition: all 0.75s ease;
+				-moz-transition: all 0.75s ease;
+				-ms-transition: all 0.75s ease;
+				-o-transition: all 0.75s ease;
+				transition: all 0.75s ease;
+	    	}
+	    	.preload-items .arba-item-loading{
+		    	background: #fff;
+	    	}
+	    	.preload-items.visible{
+		    	
+	    	}
+	    	
+	    	.cars-no-display{
+		    	display: none !important;
+	    	}
+	    	.cars-no-display.cars-display{
+		    	display: block !important;
+	    	}
+        </style>
+		
+		<!-- Animation CSS -->
+		<link href="arba-app/css/animate.css" rel="stylesheet">
+		
+		<!-- Arba Base Angular css -->
+		<link href="arba-app/css/base.css" rel="stylesheet">
+		
+		<!----------------------------------------------------------------------
+		  -
+		  --------- AngularJS - STYLES
+		  -
+		  --------------------------------------------------------------------->
+		
+		<script src="angular.js/vendor/bower/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+	</head>
+	<body>					
+		<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		
+		<!-- Loading Default Spinner -->
+		<div id="arba-loading" class="hide" ng-model="loadingHide" ng-class="{'showed': !loadingHide, '': loadingHide}">
+			<svg class="spinner" viewBox="0 0 50 50">
+				<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+			</svg>
+			<p ng-model="loadingTitle" ng-if="loadingTitle" id="status-label">{{ loadingTitle }}</p>
+			<p ng-model="loadingTitle" ng-if="!loadingTitle" id="status-label">Installing a secure connection...</p>
+		</div>
+		
+		<ui-view name="layout"></ui-view>
+		
+		<!-- In production use:
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+		-->
+		
+		<!----------------------------------------------------------------------
+		  -
+		  - ARBA.AE - SCRIPTS
+		  -
+		  --------------------------------------------------------------------->
+		
+		<!-- MATERIALIZE && JQUERY -->
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="arba-assets/js/materialize.min.js"></script>
+		
+		<!----------------------------------------------------------------------
+		  -
+		  --------- ARBA.AE - SCRIPTS
+		  -
+		  --------------------------------------------------------------------->
+		
+		
+		<!----------------------------------------------------------------------
+		  -
+		  - AngularJS - CORE SCRIPTS & DEPENDENCIES
+		  -
+		  --------------------------------------------------------------------->
+		  
+		<!-- ANGULAR MOMENT -->
+		<script src="angular.js/vendor/bower/moment/min/moment.min.js"></script>
+		
+		<!-- Include Froala Editor Plugins -->
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/froala_editor.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/align.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/char_counter.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/code_beautifier.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/code_view.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/colors.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/emoticons.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/entities.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/file.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/font_family.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/font_size.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/fullscreen.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/image.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/image_manager.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/inline_style.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/line_breaker.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/link.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/lists.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/paragraph_format.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/paragraph_style.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/quote.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/save.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/table.min.js"></script>
+		<script src="angular.js/vendor/bower/angular-froala/bower_components/froala-wysiwyg-editor/js/plugins/video.min.js"></script>
+		
+		<script src="angular.js/vendor/bower/angular/angular.js"></script>
+		
+		<script src="angular.js/vendor/bower/angular-aria/angular-aria.js"></script>
+		<script src="angular.js/vendor/bower/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="angular.js/vendor/bower/angular-animate/angular-animate.js"></script>
+        <script src="angular.js/vendor/bower/angular-cookies/angular-cookies.js"></script>
+        <script src="angular.js/vendor/bower/angular-messages/angular-messages.js"></script>
+        <script src="angular.js/vendor/bower/angular-mocks/angular-mocks.js"></script>
+        <script src="angular.js/vendor/bower/angular-resource/angular-resource.js"></script>
+        <script src="angular.js/vendor/bower/angular-route/angular-route.js"></script>
+        <script src="angular.js/vendor/bower/angular-sanitize/angular-sanitize.js"></script>
+        <script src="angular.js/vendor/bower/angular-touch/angular-touch.js"></script>
+        
+		<!-- ANGULAR FANCYBOX -->
+		<script src="angular.js/vendor/bower/fancybox-plus/dist/jquery.fancybox-plus.js"></script>
+		<script src="angular.js/vendor/bower/angular-fancybox-plus/js/angular-fancybox-plus.js"></script>
+		
+		<!-- MATERIAL ANGULAR -->
+		<script src="angular.js/vendor/bower/angular-material/angular-material.js"></script>
+		
+		<!-- ANGULAR MOMENT -->
+		<script src="angular.js/vendor/bower/angular-moment/angular-moment.js"></script>
+		
+		<!-- ANGULAR FILTERS -->
+		<script src="angular.js/vendor/bower/angular-filter/dist/angular-filter.js"></script>
+		
+		<!-- ANGULAR CACHE -->
+		<script src="angular.js/vendor/bower/angular-cache/dist/angular-cache.js"></script>
+		
+		<!-- ANGULAR YOUTUBE -->
+		<script src="https://www.youtube.com/iframe_api"></script>
+		<script src="angular.js/vendor/bower/angular-youtube-mb/src/angular-youtube-embed.js"></script>
+		
+		<!-- ANGULAR BASE64 IMAGE -->
+		<script src="angular.js/vendor/bower/angular-base64-upload/dist/angular-base64-upload.js"></script>
+		<script src="angular.js/vendor/bower/angular-base64/angular-base64.js"></script>
+		
+		<!-- AngularJS Editor Froala -->
+		<script src="angular.js/vendor/bower/angular-froala/src/angular-froala.js"></script>
+		
+		<!-- AngularJS Scroll -->
+		<script src="angular.js/vendor/bower/angular-scroll/angular-scroll.js"></script>
+		
+		<!-- AngularJS Notify Icons -->
+		<script src="angular.js/vendor/bower/angular-notification-icons/dist/angular-notification-icons.js"></script>
+		
+		<!-- SWEETALERTS -->
+		<script src="angular.js/vendor/bower/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="angular.js/vendor/bower/ng-sweet-alert/ng-sweet-alert.js"></script>
+		
+		<!-- SOCKET.IO -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+		<script src="angular.js/vendor/bower/angular-socket-io/socket.js"></script>
+		
+		<!-- WEB NOTIFICATIONS -->
+		<script type="text/javascript" src="angular.js/vendor/bower/simple-web-notification/web-notification.js"></script>
+		<script type="text/javascript" src="angular.js/vendor/bower/angular-web-notification/angular-web-notification.js"></script>
+		
+		<!----------------------------------------------------------------------
+		  -
+		  --------- AngularJS - CORE SCRIPTS & DEPENDENCIES
+		  -
+		  --------------------------------------------------------------------->
+		
+		<!----------------------------------------------------------------------
+		  -
+		  - AngularJS - ABRA.AE ENGINE, FACTORYES & SERVICES, CONTROLLERS
+		  -
+		  --------------------------------------------------------------------->
+		
+		<!-- ARBA START ENGINE & ROUTES -->
+		<script src="arba-app/app.js"></script>
+		
+		<!-- ARBA ENGINE SERVICES & DIRECTIVES -->
+		<script src="arba-app/engine-services.js"></script>
+		<script src="arba-app/directives.js"></script>
+		
+		<!-- ARBA SERVICES&FACTORIES -->
+		<script src="arba-app/scripts/services/arbaprofile.js"></script>
+		<script src="arba-app/scripts/services/arbarest.js"></script>
+		<script src="arba-app/scripts/services/arbasocial.js"></script>
+		<script src="arba-app/scripts/services/fake-arbaprofile.js"></script>
+		
+		<!-- ARBA PAGES CONTROLLERS -->
+		<script src="arba-app/scripts/controllers/blognews.js"></script>
+		<script src="arba-app/scripts/controllers/carsjournal.js"></script>
+		<script src="arba-app/scripts/controllers/followers.js"></script>
+		<script src="arba-app/scripts/controllers/home.js"></script>
+		<script src="arba-app/scripts/controllers/messagess.js"></script>
+		<script src="arba-app/scripts/controllers/mycarsjournal.js"></script>
+		<script src="arba-app/scripts/controllers/newcars.js"></script>
+		<script src="arba-app/scripts/controllers/subscriptions.js"></script>
+		<script src="arba-app/scripts/controllers/topcars.js"></script>
+		<script src="arba-app/scripts/controllers/notifications.js"></script>
+		<script src="arba-app/scripts/controllers/bookmarks.js"></script>
+		
+		<!----------------------------------------------------------------------
+		  -
+		  --------- AngularJS - AngularJS - ABRA.AE ENGINE, FACTORYES & SERVICES, CONTROLLERS
+		  -
+		  --------------------------------------------------------------------->
+		
+		
+		<!----------------------------------------------------------------------
+		  -
+		  - ARBA.AE - ASSETS SCRIPTS
+		  -
+		  --------------------------------------------------------------------->
+		  
+		<script src="arba-assets/js/init.js"></script>
+		<script src="arba-assets/js/base.js"></script>
+		<script src="arba-assets/js/jquery.bxslider.min.js"></script>
+		<script src="arba-assets/js/owl.carousel.min.js"></script>
+		<script src="arba-assets/js/modernizr.min.js"></script>
+		<script src="arba-assets/js/jquery.magnific-popup.min.js"></script>
+		<script src="arba-assets/js/album-gallery.min.js"></script>
+		
+		<!----------------------------------------------------------------------
+		  -
+		  --------- ARBA.AE - ASSETS SCRIPTS
+		  -
+		  --------------------------------------------------------------------->
+			
+	</body>
+</html>

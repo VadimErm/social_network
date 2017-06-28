@@ -1,0 +1,3 @@
+<?php
+CONST SECRET_KEY = 'cbcf4537071207a297b457305eb47eb5';
+

@@ -1,0 +1,16 @@
+<!-- Breadcrumbs -->
+	<div ng-model="profile" ng-if="profile !== null" class="breadcrumbs hide-on-small-only">
+		<div class="container">
+			<div class="col s12">
+				<ul ng-model="breadcrums" ng-if="breadcrums !== null" class="clearfix">
+					<li ng-repeat="page in breadcrums | reverse" ng-class="{'active': !page.link, '': page.link }">
+						<a ng-if="page.href && page.name.toLowerCase() !== 'main'" href="/{{ page.href }}">{{ page.name }}</a>
+						<a ng-if="page.name.toLowerCase() === 'main'" href="/">{{ page.name }}</a>
+						<span ng-if="page.name && page.name.toLowerCase() !== 'main' && page.href === ''">{{ page.name }}</span>
+						<span style="color: #999; padding-left: 5px;" ng-if="page.name.toLowerCase() !== 'main'">&rarr;</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- Breadcrumbs -->

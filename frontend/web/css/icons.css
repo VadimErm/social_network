@@ -1,0 +1,462 @@
+@font-face {
+  font-family: 'arbaicons';
+  src:  url('fonts/arbaicons.eot?rjk570');
+  src:  url('fonts/arbaicons.eot?rjk570#iefix') format('embedded-opentype'),
+    url('fonts/arbaicons.ttf?rjk570') format('truetype'),
+    url('fonts/arbaicons.woff?rjk570') format('woff'),
+    url('fonts/arbaicons.svg?rjk570#arbaicons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="ico-"], [class*=" ico-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'arbaicons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-youtube:before {
+  content: "\e900";
+}
+.ico-facebook:before {
+  content: "\e901";
+}
+.ico-twitter:before {
+  content: "\e902";
+}
+.ico-instagram:before {
+  content: "\e903";
+}
+.ico-bars:before {
+  content: "\e904";
+}
+.ico-left-arrow:before {
+  content: "\e905";
+}
+.ico-right-arrow:before {
+  content: "\e906";
+}
+.ico-acceptance-circular-button:before {
+  content: "\e907";
+}
+.ico-add-circular-button:before {
+  content: "\e908";
+}
+.ico-airplane-folded-paper-shape:before {
+  content: "\e909";
+}
+.ico-anchor-navigational-tool:before {
+  content: "\e90a";
+}
+.ico-attachment-paperclip-symbol-of-interface:before {
+  content: "\e90b";
+}
+.ico-attention-exclamation-triangular-signal:before {
+  content: "\e90c";
+}
+.ico-back-button:before {
+  content: "\e90d";
+}
+.ico-barbecue-tool-outline:before {
+  content: "\e90e";
+}
+.ico-bars-graphic:before {
+  content: "\e90f";
+}
+.ico-basketball-ball:before {
+  content: "\e910";
+}
+.ico-bell-alarm-symbol:before {
+  content: "\e911";
+}
+.ico-blank-opened-book-pages:before {
+  content: "\e912";
+}
+.ico-brush-short-tool-outline:before {
+  content: "\e913";
+}
+.ico-chronometer:before {
+  content: "\e914";
+}
+.ico-circular-clock:before {
+  content: "\e915";
+}
+.ico-circular-graphic-of-business-statistics:before {
+  content: "\e916";
+}
+.ico-clipboard:before {
+  content: "\e917";
+}
+.ico-clockwise-rotating-circular-arrow:before {
+  content: "\e918";
+}
+.ico-close-cross-circular-interface-button:before {
+  content: "\e919";
+}
+.ico-cloud-and-bolt:before {
+  content: "\e91a";
+}
+.ico-cloud-of-rain:before {
+  content: "\e91b";
+}
+.ico-cloud-shape-outlined-symbol:before {
+  content: "\e91c";
+}
+.ico-cloud-with-wind:before {
+  content: "\e91d";
+}
+.ico-cloudy-day-outlined-weather-interface-symbol:before {
+  content: "\e91e";
+}
+.ico-cloudy-foggy-day-weather-symbol:before {
+  content: "\e91f";
+}
+.ico-cloudy-hail-day-weather-symbol:before {
+  content: "\e920";
+}
+.ico-cloudy-rain-day-weather-symbol:before {
+  content: "\e921";
+}
+.ico-cloudy-windy-day:before {
+  content: "\e922";
+}
+.ico-cold-hail-falling-of-a-cloud-weather-interface-symbol:before {
+  content: "\e923";
+}
+.ico-commercial-shopping-cart-symbol:before {
+  content: "\e924";
+}
+.ico-compass:before {
+  content: "\e925";
+}
+.ico-cooking-pot-outlined-symbol:before {
+  content: "\e926";
+}
+.ico-cupcake-outline:before {
+  content: "\e927";
+}
+.ico-danger-symbol:before {
+  content: "\e928";
+}
+.ico-database-or-cake-outline:before {
+  content: "\e929";
+}
+.ico-diaphragm:before {
+  content: "\e92a";
+}
+.ico-down-arrow-in-circular-button:before {
+  content: "\e92b";
+}
+.ico-download-symbol:before {
+  content: "\e92c";
+}
+.ico-edit-pencil-symbol:before {
+  content: "\e92d";
+}
+.ico-electrical-storm-day:before {
+  content: "\e92e";
+}
+.ico-empty-daily-calendar-page:before {
+  content: "\e92f";
+}
+.ico-empty-sand-clock-outlined-tool-symbol:before {
+  content: "\e930";
+}
+.ico-equalization-control:before {
+  content: "\e931";
+}
+.ico-favorites-star-outlined-symbol:before {
+  content: "\e932";
+}
+.ico-file-paper-sheet-outlined-interface-symbol:before {
+  content: "\e933";
+}
+.ico-first-aid-set-bag:before {
+  content: "\e934";
+}
+.ico-flash:before {
+  content: "\e935";
+}
+.ico-flower-shape-like-an-atom-with-hexagonal-center:before {
+  content: "\e936";
+}
+.ico-focus-target-symbol:before {
+  content: "\e937";
+}
+.ico-fog:before {
+  content: "\e938";
+}
+.ico-folded-paper-of-a-map:before {
+  content: "\e939";
+}
+.ico-folder-variant:before {
+  content: "\e93a";
+}
+.ico-game-control:before {
+  content: "\e93b";
+}
+.ico-global-planet-grid-symbol:before {
+  content: "\e93c";
+}
+.ico-hazelnut-seed:before {
+  content: "\e93d";
+}
+.ico-headphones:before {
+  content: "\e93e";
+}
+.ico-heart-outline:before {
+  content: "\e93f";
+}
+.ico-helm-wheel:before {
+  content: "\e940";
+}
+.ico-home:before {
+  content: "\e941";
+}
+.ico-information-circular-button-symbol:before {
+  content: "\e942";
+}
+.ico-internet-download-interface-symbol:before {
+  content: "\e943";
+}
+.ico-leaf-natural-shape:before {
+  content: "\e944";
+}
+.ico-link-programing-symbol-of-interface:before {
+  content: "\e945";
+}
+.ico-liquid-drop-outlined-shape:before {
+  content: "\e946";
+}
+.ico-lock-padlock-outline-symbol-of-security-tool:before {
+  content: "\e947";
+}
+.ico-magnetic-tool:before {
+  content: "\e948";
+}
+.ico-magnifier:before {
+  content: "\e949";
+}
+.ico-magnifier-1:before {
+  content: "\e94a";
+}
+.ico-maps-placeholder-outlined-tool:before {
+  content: "\e94b";
+}
+.ico-medal-on-a-necklace:before {
+  content: "\e94c";
+}
+.ico-megaphone-side-view-outlined-tool:before {
+  content: "\e94d";
+}
+.ico-minus-circular-button:before {
+  content: "\e94e";
+}
+.ico-moon-phase-outline:before {
+  content: "\e94f";
+}
+.ico-musical-note:before {
+  content: "\e950";
+}
+.ico-new-email-interface-symbol-of-closed-envelope-back:before {
+  content: "\e951";
+}
+.ico-note-interface-symbol:before {
+  content: "\e952";
+}
+.ico-note-interface-symbol-1:before {
+  content: "\e953";
+}
+.ico-parabolic-antenna:before {
+  content: "\e954";
+}
+.ico-peace-rotated-symbol:before {
+  content: "\e955";
+}
+.ico-pen-point-interface-writing-tool-symbol:before {
+  content: "\e956";
+}
+.ico-photo-camera-outlined-interface-symbol:before {
+  content: "\e957";
+}
+.ico-piano-keys-outlined-instrument:before {
+  content: "\e958";
+}
+.ico-picture-of-artistic-landscape:before {
+  content: "\e959";
+}
+.ico-pill-outline:before {
+  content: "\e95a";
+}
+.ico-pin:before {
+  content: "\e95b";
+}
+.ico-pine-christmas-tree-outlined-shape:before {
+  content: "\e95c";
+}
+.ico-portfolio-of-business:before {
+  content: "\e95d";
+}
+.ico-power-button-symbol:before {
+  content: "\e95e";
+}
+.ico-precious-stone:before {
+  content: "\e95f";
+}
+.ico-print-outlined-interface-symbol:before {
+  content: "\e960";
+}
+.ico-prohibition-signal:before {
+  content: "\e961";
+}
+.ico-rain-weather-symbol:before {
+  content: "\e962";
+}
+.ico-rainy-day-weather-symbol:before {
+  content: "\e963";
+}
+.ico-rainy-day-weather-symbol-1:before {
+  content: "\e964";
+}
+.ico-right-arrow-circular-button:before {
+  content: "\e965";
+}
+.ico-right-arrow-outline:before {
+  content: "\e966";
+}
+.ico-right-arrow-signal-outline:before {
+  content: "\e967";
+}
+.ico-rocket-travelling-space-transport:before {
+  content: "\e968";
+}
+.ico-saturn:before {
+  content: "\e969";
+}
+.ico-shield-outline:before {
+  content: "\e96a";
+}
+.ico-shopping-basket:before {
+  content: "\e96b";
+}
+.ico-skull:before {
+  content: "\e96c";
+}
+.ico-spam-control-interface-symbol-of-outlined-filter:before {
+  content: "\e96d";
+}
+.ico-speaker-audio-interface-symbol:before {
+  content: "\e96e";
+}
+.ico-speech-bubble-rectangular-chat-symbol:before {
+  content: "\e96f";
+}
+.ico-sports-or-education-trophy-cup:before {
+  content: "\e970";
+}
+.ico-sunrise-weather-symbol:before {
+  content: "\e971";
+}
+.ico-sunset:before {
+  content: "\e972";
+}
+.ico-sun-sunny-day-weather-symbol:before {
+  content: "\e973";
+}
+.ico-switches-pair:before {
+  content: "\e974";
+}
+.ico-tag-outline:before {
+  content: "\e975";
+}
+.ico-telephone-auricular-outlined-tool-symbol:before {
+  content: "\e976";
+}
+.ico-temperature-controlling-tool-symbol:before {
+  content: "\e977";
+}
+.ico-thermometer:before {
+  content: "\e978";
+}
+.ico-thermometer-symbol:before {
+  content: "\e979";
+}
+.ico-three-ascending-graphic-of-gross-bars-outline-interface-symbol:before {
+  content: "\e97a";
+}
+.ico-tool-interface-symbol:before {
+  content: "\e97b";
+}
+.ico-tray-outlined-symbol:before {
+  content: "\e97c";
+}
+.ico-two-squares-outlined-symbol-of-interface:before {
+  content: "\e97d";
+}
+.ico-umbrella:before {
+  content: "\e97e";
+}
+.ico-university-graduate-hat:before {
+  content: "\e97f";
+}
+.ico-upload-symbol:before {
+  content: "\e980";
+}
+.ico-upload-to-internet:before {
+  content: "\e981";
+}
+.ico-upload-up-arrow-symbol-in-circular-outlined-button:before {
+  content: "\e982";
+}
+.ico-upper-right-arrow:before {
+  content: "\e983";
+}
+.ico-user-outline-shape:before {
+  content: "\e984";
+}
+.ico-video-camera:before {
+  content: "\e985";
+}
+.ico-visible-eye-visibility-interface-symbol:before {
+  content: "\e986";
+}
+.ico-voice-microphone-intreface-symbol:before {
+  content: "\e987";
+}
+.ico-wheel-or-ball:before {
+  content: "\e988";
+}
+.ico-wheel-or-window-of-circular-shape:before {
+  content: "\e989";
+}
+.ico-white-flag:before {
+  content: "\e98a";
+}
+.ico-wifi-connection-signal-symbol:before {
+  content: "\e98b";
+}
+.ico-wind-direction-tool:before {
+  content: "\e98c";
+}
+.ico-winds-symbol:before {
+  content: "\e98d";
+}
+.ico-winter-cloud-with-rain-and-hail:before {
+  content: "\e98e";
+}
+.ico-wrench-outlined-tool:before {
+  content: "\e98f";
+}
+.ico-zig-zag-line-graphic-symbol:before {
+  content: "\e990";
+}
+

@@ -1,0 +1,55 @@
+.container-login {
+    width: 30%;
+    padding: 7px;
+}
+
+.signup-option [type="radio"]:not(:checked),
+.signup-option [type="radio"]:checked {
+    position: relative;
+    opacity: 1;
+    left: auto;
+}
+
+input#signupform-show_real_name, input#signupform-show_real_birthday {
+    position: relative;
+    opacity: 1;
+    left: auto;
+}
+
+.help-block-error {
+    color: red;
+}
+
+.preloader {
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    background-image: url("/images/preloader.gif");
+    background-size: 32px 32px;
+}
+
+#cars-preview {
+    text-align: center;
+    margin-top: 10px;
+}
+.crop-button{
+    display: block;
+    position: absolute;
+    top:0;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+.cropper-container{
+    width: 100% !important;
+}
+#progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #CCCCCC;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}

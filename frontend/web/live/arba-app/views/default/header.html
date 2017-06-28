@@ -1,0 +1,282 @@
+	<!-- Header -->
+	<div ng-if="notAngularSystem === false">
+		<div ng-model="profile" ng-if="profile !== null" class="nav-wrap">
+			<nav ng-model="profileWakeUp" id="profile-header-menu" ng-class="{'': !profileWakeUp, 'wake-up': profileWakeUp}" class="z-depth-0">
+				<div class="nav-wrapper container">
+					<div class="row">
+						<div class="col s2 m5">
+							<!-- Logo wrap -->
+							<a id="logo" href="/">
+								Arba<span>.ae</span>
+							</a>
+							<!-- /Logo wrap -->
+							<!-- Slogan -->
+							<span class="slogan">Where cars become friends</span>
+							<!-- /Slogan wrap -->
+						</div>
+						
+					  <!-- Top icons -->
+					  <div class="col s10 m7 pos-rel">
+						<ul class="top-list clearfix">
+							<li><div id="top-search"><span class="ico-magnifier"></span></div></li>
+							<li class="hide-on-small-only">
+								<div class="top-user-profile">
+									<div class="top-avatar round">
+										<img ng-model="profile.avatar" ng-if="profile.avatar" src="{{ profile.avatar }}">
+									</div>
+									<p ng-model="profile.first_name" ng-if="profile.first_name">Hi, <a href="/user/account/profile" ng-model="profile.first_name" data-activates="slide-out" class="profile-name">{{ profile.first_name }}</a></p>
+								</div>
+							</li>
+							<li>
+								<a  ui-sref="dash.messages({type: 'unread'})" ui-sref-active="active" class="pos-rel notify">
+									<span class="ico-new-email-interface-symbol-of-closed-envelope-back"></span>
+									<div class="notify-badge" ng-model="profile.messages" ng-if="profile.messages">{{ profile.messages }}</div>
+								</a>
+								<a ng-class="{'blink': isLoading === true, '': isLoading === false}" id='notify-item' ng-click="showNotifications($event)" href="javascript:void(0)" class="pos-rel notify">
+									<span class="ico-bell-alarm-symbol"></span>
+									<div class="notify-badge" ng-model="profile.notifications" ng-if="profile.notifications">{{ profile.notifications }}</div>
+								</a>
+								<a href="#" data-activates="slide-out" class="profile-btn"><span class="ico-bars"></span></a>
+							</li>
+						</ul>
+					  </div>
+					  <!-- /Top icons -->
+				  </div>
+				</div>
+			</nav>
+		</div>
+		
+		<!-- User navigation -->
+		<div ng-model="profile" ng-if="profile !== null" id="slide-out" class="side-nav">
+			<div class="nav-user-top center">
+				<div class="nav-user-avatar round">
+					<img ng-model="profile.avatar" src="{{ profile.avatar }}" alt="profile avatar">
+				</div>
+				<ul class="top-user-info">
+					<li ng-model="profile.city"><span class="ico-maps-placeholder-outlined-tool"></span>{{ profile.city }}</li>
+					<li ng-model="profile.favorites"><span class="ico-favorites-star-outlined-symbol"></span>{{ profile.favorites }}</li>
+				</ul>
+			</div>
+			<div class="user-nav-menu">
+				<ul>
+					<li><a href="/feed">My news feed</a></li>
+					<li><a href="/user/account/profile">My profile</a></li>
+					
+					<li class="garage-menu">
+						<a class="garage-menu-with-sep" href="/garage">My garage</a>
+					</li>
+					<li style="padding-left: 40px;background: rgba(10, 10, 10, 0.12);" ng-model="cars" ng-if="cars.length" ng-repeat="car in cars" class="clearfix">
+						<a ng-model="car.id" ui-sref="dash.myjournal-my({carID: car.id})" ui-sref-active="active">
+							<span style="color: #888;" ng-model="car.car_name" class="truncate">{{ car.car_name }}</span>
+						</a><div style="display: none" class="user-badge">23</div>
+					</li>
+					
+					<li><a ui-sref="dash.messages({type: 'all'})" ui-sref-active="active">My messages</a><div class="user-badge" ng-model="profile.messages">{{ profile.messages }}</div></li>
+					<li><a href="/user/album">My photos</a><div class="user-badge" ng-model="profile.photos">{{ profile.photos }}</div><div class="user-badge" ng-model="profile.photos_likes"><span class="ico-heart-outline"></span>{{ profile.photos_likes }}</div></li>
+					<li><a ui-sref="dash.achievements" ui-sref-active="active">My achievements</a><div class="user-badge" ng-model="profile.achievements">{{ profile.achievements }}</div><div class="user-badge"><span class="ico-heart-outline" ng-model="profile.achievements_likes"></span>{{ profile.achievements_likes }}</div></li>
+					<li><a ui-sref="dash.my-subscriptions({type: 'blogs'})" ui-sref-active="active">My subscriptions</a><div class="user-badge" ng-model="profile.followers">{{ profile.followers }}</div></li>
+					<li><a ui-sref="dash.bookmarks({type: 'users'})" ui-sref-active="active">My bookmarks</a><div class="user-badge" ng-model="profile.bookmarks">{{ profile.bookmarks }}</div></li>
+					<li><a ui-sref="dash.notifications" ui-sref-active="active">My notifications</a><div class="user-badge" ng-model="profile.notifications">{{ profile.notifications }}</div></li><li><a ui-sref="dash.live-likes" ui-sref-active="active">My Live Likes</a><div class="user-badge"><span class="ico-heart-outline" ng-model="profile.live_likes"></span>{{ profile.live_likes }}</div></li>
+					<li><a ng-click="signout()" href="javascript:void(0)">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /User navigation -->
+	
+		
+		<div ng-model="profile" ng-if="profile === null" class="nav-wrap">
+			<nav ng-model="profileWakeUp" id="non-profile-header-menu" ng-class="{'': !profileWakeUp, 'wake-up': profileWakeUp}" class="z-depth-0">
+				<div class="nav-wrapper container">
+					<div class="row">
+						<div class="col s2 m5">
+							<!-- Logo wrap -->
+							<a id="logo" href="/">
+								Arba<span>.ae</span>
+							</a>
+							<!-- /Logo wrap -->
+							<!-- Slogan -->
+							<span class="slogan">Where cars become friends</span>
+							<!-- /Slogan wrapper -->
+						</div>
+						
+					  
+					  <!-- Top icons -->
+					  <div class="col s10 m7 pos-rel">
+						<ul class="top-list clearfix">
+							<li><div id="top-search"><span class="ico-magnifier"></span></div></li>
+							<li>
+								<a href="#signin" class="popup-form">Login</a>
+							</li>
+							<li>
+								<a href="/site/signup">Register</a>
+							</li>
+						</ul>
+					  </div>
+					  <!-- /Top icons -->
+				  </div>
+				</div>
+			</nav>
+		</div>
+	
+	<!-- /Header -->
+		
+	<!-- Slider ng-class="{'': !itemWakeUp, 'fadeIn visible': itemWakeUp}" -->
+		<div ng-model="profile" ng-class="{'': !itemWakeUp, 'fadeIn visible cars-display': itemWakeUp && profile === null}" class="animated preload-items section main-slider cars-no-display">
+			<div ng-model="itemWakeUpFinish" ng-class="{'': !itemWakeUpFinish, 'fadeOut': itemWakeUpFinish}" style="height: calc(100% - 50px);" class="animated arba-item-loading">
+				<svg class="spinner" viewBox="0 0 50 50">
+					<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+				</svg>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col s12">
+						<div class="slider">
+							<ul class="slides">
+								<li>
+									<div class="caption-outer">
+										<div class="caption-inner center">
+											<h1>Lorem Ipsum Dolor sit amet</h1>
+											<p>Nulla eu lectus nec magna porttitor varius sit amet eu neque.</p>
+											<a class="btn-large waves-effect" href="/site/signup">register now!</a>
+										</div>
+									</div>
+									<img src="images/slide1.jpg" alt="slide">
+								</li>
+								<li>
+									<div class="caption-outer">
+										<div class="caption-inner center">
+											<h1>Lorem Ipsum Dolor sit amet</h1>
+											<p>Nulla eu lectus nec magna porttitor varius sit amet eu neque.</p>
+											<a class="btn-large waves-effect" href="/site/signup">register now!</a>
+										</div>
+									</div>
+									<img src="images/slide2.jpg" alt="slide">
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Slider -->
+	
+	<div ng-if="notAngularSystem === true">
+		<div ng-model="profile" ng-if="profile !== null" class="nav-wrap">
+			<nav ng-model="profileWakeUp" id="profile-header-menu" ng-class="{'': !profileWakeUp, 'wake-up': profileWakeUp}" class="z-depth-0">
+				<div class="nav-wrapper container">
+					<div class="row">
+						<div class="col s2 m5">
+							<!-- Logo wrap -->
+							<a id="logo" href="/">
+								Arba<span>.ae</span>
+							</a>
+							<!-- /Logo wrap -->
+							<!-- Slogan -->
+							<span class="slogan">Where cars become friends</span>
+							<!-- /Slogan wrap -->
+						</div>
+						
+					  <!-- Top icons -->
+					  <div class="col s10 m7 pos-rel">
+						<ul class="top-list clearfix">
+							<li><div id="top-search"><span class="ico-magnifier"></span></div></li>
+							<li class="hide-on-small-only">
+								<div class="top-user-profile">
+									<div class="top-avatar round">
+										<img ng-model="profile.avatar" ng-if="profile.avatar" src="{{ profile.avatar }}">
+									</div>
+									<p ng-model="profile.first_name" ng-if="profile.first_name">Hi, <a href="/user/account/profile" ng-model="profile.first_name" data-activates="slide-out" class="profile-name">{{ profile.first_name }}</a></p>
+								</div>
+							</li>
+							<li>
+								<a ng-model="statesUrls" href="/live/{{ statesUrls['dash.messages'] }}/unread" class="pos-rel notify">
+									<span class="ico-new-email-interface-symbol-of-closed-envelope-back"></span>
+									<div class="notify-badge" ng-model="profile.messages" ng-if="profile.messages">{{ profile.messages }}</div>
+								</a>
+								<a ng-class="{'blink': isLoading === true, '': isLoading === false}" id='notify-item' ng-click="showNotifications($event)" href="javascript:void(0)" class="pos-rel notify">
+									<span class="ico-bell-alarm-symbol"></span>
+									<div class="notify-badge" ng-model="profile.notifications" ng-if="profile.notifications">{{ profile.notifications }}</div>
+								</a>
+								<a href="#" data-activates="slide-out" class="profile-btn"><span class="ico-bars"></span></a>
+							</li>
+						</ul>
+					  </div>
+					  <!-- /Top icons -->
+				  </div>
+				</div>
+			</nav>
+		</div>
+		
+		<!-- Users navigation -->
+		<div ng-model="profile" ng-if="profile !== null" id="slide-out" class="side-nav">
+			<div class="nav-user-top center">
+				<div class="nav-user-avatar round">
+					<img ng-model="profile.avatar" src="{{ profile.avatar }}" alt="profile avatar">
+				</div>
+				<ul class="top-user-info">
+					<li ng-model="profile.city"><span class="ico-maps-placeholder-outlined-tool"></span>{{ profile.city }}</li>
+					<li ng-model="profile.favorites"><span class="ico-favorites-star-outlined-symbol"></span>{{ profile.favorites }}</li>
+				</ul>
+			</div>
+			<div class="user-nav-menu">
+				<ul>
+					<li><a href="/feed">My news feed</a></li>
+					<li><a href="/user/account/profile">My profile</a></li>
+					
+					<li class="garage-menu">
+						<a class="garage-menu-with-sep" href="/garage">My garage</a>
+					</li>
+					<li style="padding-left: 40px;background: rgba(10, 10, 10, 0.12);" ng-model="cars" ng-if="cars.length" ng-repeat="car in cars" class="clearfix">
+						<a ng-model="car.id" href="/live/{{ statesUrls['dash.myjournal-my'] }}/{{ car.id }}" ui-sref-active="active">
+							<span style="color: #888;" ng-model="car.car_name" class="truncate">{{ car.car_name }}</span>
+						</a><div style="display: none" class="user-badge">23</div>
+					</li>
+					
+					<li><a href="/live/{{ statesUrls['dash.messages'] }}/all">My messages</a><div class="user-badge" ng-model="profile.messages">{{ profile.messages }}</div></li>
+					<li><a href="/user/album">My photos</a><div class="user-badge" ng-model="profile.photos">{{ profile.photos }}</div><div class="user-badge" ng-model="profile.photos_likes"><span class="ico-heart-outline"></span>{{ profile.photos_likes }}</div></li>
+					<li><a href="/live/{{ statesUrls['dash.achievements'] }}">My achievements</a><div class="user-badge" ng-model="profile.achievements">{{ profile.achievements }}</div><div class="user-badge"><span class="ico-heart-outline" ng-model="profile.achievements_likes"></span>{{ profile.achievements_likes }}</div></li>
+					<li><a href="/live/{{ statesUrls['dash.my-subscriptions'] }}/blogs">My subscriptions</a><div class="user-badge" ng-model="profile.followers">{{ profile.followers }}</div></li>
+					<li><a href="/live/{{ statesUrls['dash.bookmarks'] }}/users">My bookmarks</a><div class="user-badge" ng-model="profile.bookmarks">{{ profile.bookmarks }}</div></li>
+					<li><a href="/live/{{ statesUrls['dash.notifications'] }}">My notifications</a><div class="user-badge" ng-model="profile.notifications">{{ profile.notifications }}</div></li><li><a ui-sref="dash.live-likes" ui-sref-active="active">My Live Likes</a><div class="user-badge"><span class="ico-heart-outline" ng-model="profile.live_likes"></span>{{ profile.live_likes }}</div></li>
+					<li><a ng-click="signout()" href="javascript:void(0)">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /User navigation -->
+	
+		
+		<div ng-model="profile" ng-if="profile === null" class="nav-wrap">
+			<nav ng-model="profileWakeUp" id="non-profile-header-menu" ng-class="{'': !profileWakeUp, 'wake-up': profileWakeUp}" class="z-depth-0">
+				<div class="nav-wrapper container">
+					<div class="row">
+						<div class="col s2 m5">
+							<!-- Logo wrap -->
+							<a id="logo" href="/">
+								Arba<span>.ae</span>
+							</a>
+							<!-- /Logo wrap -->
+							<!-- Slogan -->
+							<span class="slogan">Where cars become friends</span>
+							<!-- /Slogan wrapper -->
+						</div>
+						
+					  
+					  <!-- Top icons -->
+					  <div class="col s10 m7 pos-rel">
+						<ul class="top-list clearfix">
+							<li><div id="top-search"><span class="ico-magnifier"></span></div></li>
+							<li>
+								<a href="#signin" class="popup-form">Login</a>
+							</li>
+							<li>
+								<a href="/site/signup">Register</a>
+							</li>
+						</ul>
+					  </div>
+					  <!-- /Top icons -->
+				  </div>
+				</div>
+			</nav>
+		</div>
+	</div>
